@@ -1,6 +1,14 @@
 document.addEventListener("DOMContentLoaded", function () {
+    // Sample code to generate a random board
+    function generateRandomBoard(size) {
+        const numbers = Array.from({ length: size / 2 }, (_, i) => i + 1);
+        const shuffledNumbers = [...numbers, ...numbers].sort(() => Math.random() - 0.5);
+        return shuffledNumbers;
+    }
+
     // Initial Variables
-    const numbers = [1, 2, 3, 4, 5, 6];
+    const size = 20; // Change this to the desired board size (twice the number of cards)
+    const numbers = generateRandomBoard(size);
     let gameArray = [];
     let flippedCards = [];
     let matchedPairs = 0;
@@ -8,16 +16,12 @@ document.addEventListener("DOMContentLoaded", function () {
     let correctSound = new Audio('correct.mp3');
     let winSound = new Audio('sweet.mp3');
 
-    // Setup Array
-    gameArray = numbers.concat(numbers);
-    gameArray.sort(() => 0.5 - Math.random());
-
     // Create Game Board
     const gameBoard = document.getElementById('gameBoard');
-    for (let i = 0; i < gameArray.length; i++) {
+    for (let i = 0; i < numbers.length; i++) {
         const card = document.createElement('div');
         card.classList.add('card');
-        card.dataset.number = gameArray[i];
+        card.dataset.number = numbers[i];
         card.addEventListener('click', handleCardClick);
         gameBoard.appendChild(card);
     }
@@ -53,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 flippedCards = [];
 
                 // Check for game completion
-                if (matchedPairs === numbers.length) {
+                if (matchedPairs === numbers.length / 2) {
                     alert('You won!');
                     winSound.play();
                 }
