@@ -60,6 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
+
         // Show the card's number
         const cardNumber = clickedCard.dataset.number;
         clickedCard.textContent = cardNumber;
@@ -98,16 +99,16 @@ document.addEventListener("DOMContentLoaded", function () {
                 // Cards do not match, flip them back after a short delay
                 setTimeout(() => {
                     wrongSound.play();
-                    firstCard.textContent = "???";
-                    secondCard.textContent = "???";
-                    firstCard.style.backgroundColor = "lightgrey"
-                    secondCard.style.backgroundColor = "lightgrey"
+                    firstCard.textContent = "";
+                    secondCard.textContent = "";
+                    firstCard.style.backgroundColor = "yellow"
+                    secondCard.style.backgroundColor = "yellow"
                     firstCard.classList.remove("flipped");
                     secondCard.classList.remove("flipped");
 
                     // Reset flippedCards array
                     flippedCards = [];
-                }, 500);
+                }, 700);
             }
         }
     }
@@ -158,17 +159,17 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     const images = document.querySelectorAll('.carousel-image');
-        let currentImageIndex = 0;
+    let currentImageIndex = 0;
 
-        function changeImage() {
-            images[currentImageIndex].style.opacity = 0;
-            currentImageIndex = (currentImageIndex + 1) % images.length;
-            images[currentImageIndex].style.opacity = 1;
-        }
-
-        // Initial image display
+    function changeImage() {
+        images[currentImageIndex].style.opacity = 0;
+        currentImageIndex = (currentImageIndex + 1) % images.length;
         images[currentImageIndex].style.opacity = 1;
+    }
 
-        setInterval(changeImage, 5000); // 15 seconds in milliseconds
+    // Initial image display
+    images[currentImageIndex].style.opacity = 1;
+
+    setInterval(changeImage, 5000); // 15 seconds in milliseconds
 });
 
