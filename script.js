@@ -7,12 +7,13 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Initial Variables
-    const size = 24; // Change this to the desired board size (twice the number of cards)
+    var size = 12; // Change this to the desired board size (twice the number of cards)
     const numbers = generateRandomBoard(size);
     let gameArray = [];
     let flippedCards = [];
     let matchedPairs = 0;
     let currentNumberCounter = 1
+    document.getElementById("currentCard").textContent = currentNumberCounter;
     let wrongSound = new Audio('wrong.mp3');
     let correctSound = new Audio('correct.mp3');
     let winSound = new Audio('sweet.mp3');
@@ -86,4 +87,44 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
     }
+
+    const easyModeButton = document.getElementById('easyMode');
+    easyModeButton.addEventListener('click', function (event) {
+        size = 12;
+        resetGame();
+        console.log("easy ran")
+    });
+
+    const mediumModeButton = document.getElementById('mediumMode');
+    mediumModeButton.addEventListener('click', function (event) {
+        size = 16;
+        resetGame();
+    });
+
+    const hardModeButton = document.getElementById('hardMode');
+    hardModeButton.addEventListener('click', function (event) {
+        size = 20;
+        resetGame();
+    });
+    
+    function resetGame() {
+        gameBoard.innerHTML = ''; // Clear the existing game board
+        currentNumberCounter = 1;
+        document.getElementById("currentCard").textContent = currentNumberCounter;
+        numbers.length = 0; // Clear the numbers array
+        numbers.push(...generateRandomBoard(size)); // Generate new numbers
+        matchedPairs = 0;
+        flippedCards = [];
+        gameArray = [];
+
+        // Create a new game board with the updated size
+        for (let i = 0; i < numbers.length; i++) {
+            const card = document.createElement('div');
+            card.classList.add('card');
+            card.dataset.number = numbers[i];
+            card.addEventListener('click', handleCardClick);
+            gameBoard.appendChild(card);
+        }
+    }
 });
+
