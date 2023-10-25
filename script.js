@@ -88,6 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    //Easy Mode Button event listener
     const easyModeButton = document.getElementById('easyMode');
     easyModeButton.addEventListener('click', function (event) {
         size = 12;
@@ -95,18 +96,21 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("easy ran")
     });
 
+    //Medium Mode Button event listener
     const mediumModeButton = document.getElementById('mediumMode');
     mediumModeButton.addEventListener('click', function (event) {
         size = 16;
         resetGame();
     });
 
+    //Hard Mode Button event listener
     const hardModeButton = document.getElementById('hardMode');
     hardModeButton.addEventListener('click', function (event) {
         size = 20;
         resetGame();
     });
     
+    //Game Reset function
     function resetGame() {
         gameBoard.innerHTML = ''; // Clear the existing game board
         currentNumberCounter = 1;
