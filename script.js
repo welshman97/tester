@@ -6,6 +6,26 @@ document.addEventListener("DOMContentLoaded", function () {
         return shuffledNumbers;
     }
 
+    //Timer
+    const timerElement = document.getElementById('timer');
+
+    let startTime;
+    function startTimer() {
+        startTime = new Date();
+    }
+
+    function startTimer() {
+        startTime = Date.now();
+        timerInterval = setInterval(updateTimer, 1000);
+    }
+
+    function updateTimer() {
+        const currentTime = Date.now();
+        const elapsedTime = Math.floor((currentTime - startTime) / 1000);
+        timerElement.textContent = `You have been playing for ${elapsedTime} seconds`;
+    }
+
+
     // Initial Variables
     var size = 12; // Change this to the desired board size (twice the number of cards)
     const numbers = generateRandomBoard(size);
@@ -26,6 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
         card.dataset.number = numbers[i];
         card.addEventListener('click', handleCardClick);
         gameBoard.appendChild(card);
+        startTimer();
     }
 
     // Handle Card Clicks
@@ -93,7 +114,7 @@ document.addEventListener("DOMContentLoaded", function () {
     easyModeButton.addEventListener('click', function (event) {
         size = 12;
         resetGame();
-        console.log("easy ran")
+        startTimer();
     });
 
     //Medium Mode Button event listener
@@ -101,6 +122,7 @@ document.addEventListener("DOMContentLoaded", function () {
     mediumModeButton.addEventListener('click', function (event) {
         size = 16;
         resetGame();
+        startTimer();
     });
 
     //Hard Mode Button event listener
@@ -108,8 +130,9 @@ document.addEventListener("DOMContentLoaded", function () {
     hardModeButton.addEventListener('click', function (event) {
         size = 20;
         resetGame();
+        startTimer();
     });
-    
+
     //Game Reset function
     function resetGame() {
         gameBoard.innerHTML = ''; // Clear the existing game board
