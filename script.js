@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     //Timer
     const timerElement = document.getElementById('timer');
+    let elapsedTime;
 
     let startTime;
     function startTimer() {
@@ -21,10 +22,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function updateTimer() {
         const currentTime = Date.now();
-        const elapsedTime = Math.floor((currentTime - startTime) / 1000);
+        elapsedTime = Math.floor((currentTime - startTime) / 1000);
         timerElement.textContent = `You have been playing for ${elapsedTime} seconds`;
     }
 
+    bestTime = document.getElementById('bestTime');
 
     // Initial Variables
     var size = 12; // Change this to the desired board size (twice the number of cards)
@@ -90,6 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (matchedPairs === (numbers.length / 2)) {
                     winSound.play();
                     setTimeout(() => { alert("You won!"); }, 500); // put in a delay to allow the browser to update the color of last card before displaying success message!!!
+                    bestTime.textContent = `Your best time is ${elapsedTime} seconds`
                 }
             } else {
                 // Cards do not match, flip them back after a short delay
