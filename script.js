@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let flippedCards = [];
     let matchedPairs = 0;
     let currentNumberCounter = 1
-    document.getElementById("currentCard").textContent = currentNumberCounter;
+    document.getElementById("currentCard").textContent = `You are looking for the ${currentNumberCounter}s`;
     let wrongSound = new Audio('wrong.mp3');
     let correctSound = new Audio('correct.mp3');
     let winSound = new Audio('sweet.mp3');
@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (currentNumberCounter < (numbers.length / 2)) {
                     //only increase if cards remaining to be found
                     currentNumberCounter++;
-                    document.getElementById("currentCard").textContent = currentNumberCounter; // update the current value that has to be matched 
+                    document.getElementById("currentCard").textContent = `You are looking for the ${currentNumberCounter}s`; // update the current value that has to be matched 
                 }
 
                 // Reset flippedCards array
@@ -137,7 +137,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function resetGame() {
         gameBoard.innerHTML = ''; // Clear the existing game board
         currentNumberCounter = 1;
-        document.getElementById("currentCard").textContent = currentNumberCounter;
+        document.getElementById("currentCard").textContent = `You are looking for the ${currentNumberCounter}s`;
         numbers.length = 0; // Clear the numbers array
         numbers.push(...generateRandomBoard(size)); // Generate new numbers
         matchedPairs = 0;
