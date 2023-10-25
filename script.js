@@ -156,5 +156,19 @@ document.addEventListener("DOMContentLoaded", function () {
             gameBoard.appendChild(card);
         }
     }
+
+    const images = document.querySelectorAll('.carousel-image');
+        let currentImageIndex = 0;
+
+        function changeImage() {
+            images[currentImageIndex].style.opacity = 0;
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            images[currentImageIndex].style.opacity = 1;
+        }
+
+        // Initial image display
+        images[currentImageIndex].style.opacity = 1;
+
+        setInterval(changeImage, 5000); // 15 seconds in milliseconds
 });
 
