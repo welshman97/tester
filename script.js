@@ -1,4 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
+
+    //Background Audio
+    const audio = document.querySelector("audio");
+    audio.volume = 0.1;
+    audio.play();
+
     // Sample code to generate a random board
     function generateRandomBoard(size) {
         const numbers = Array.from({ length: size / 2 }, (_, i) => i + 1);
@@ -36,9 +42,10 @@ document.addEventListener("DOMContentLoaded", function () {
     let matchedPairs = 0;
     let currentNumberCounter = 1
     document.getElementById("currentCard").textContent = `You are looking for the ${currentNumberCounter}s`;
-    let wrongSound = new Audio('wrong.mp3');
-    let correctSound = new Audio('correct.mp3');
-    let winSound = new Audio('sweet.mp3');
+    let wrongSound = new Audio("sounds/answer-wrong.mp3");
+    let correctSound = new Audio('sounds/correct-ans-sound.mp3');
+    let winSound = new Audio('sounds/all-i-do-is-win.mp3');
+    let cardFlipSound = new Audio('sounds/card-flip.mp3');
 
     // Create Game Board
     const gameBoard = document.getElementById('gameBoard');
@@ -50,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
         gameBoard.appendChild(card);
         startTimer();
     }
-
+    alert("Please make sure your screen size is larger than 422px");
     // Handle Card Clicks
     function handleCardClick(event) {
         const clickedCard = event.target;
@@ -66,6 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
         clickedCard.textContent = cardNumber;
         clickedCard.style.backgroundColor = "lightcoral";
         clickedCard.classList.add('flipped');
+        cardFlipSound.play();
 
         // Add card to flippedCards array
         flippedCards.push(clickedCard);
@@ -157,19 +165,4 @@ document.addEventListener("DOMContentLoaded", function () {
             gameBoard.appendChild(card);
         }
     }
-
-    const images = document.querySelectorAll('.carousel-image');
-    let currentImageIndex = 0;
-
-    function changeImage() {
-        images[currentImageIndex].style.opacity = 0;
-        currentImageIndex = (currentImageIndex + 1) % images.length;
-        images[currentImageIndex].style.opacity = 1;
-    }
-
-    // Initial image display
-    images[currentImageIndex].style.opacity = 1;
-
-    setInterval(changeImage, 5000); // 15 seconds in milliseconds
 });
-

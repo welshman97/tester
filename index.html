@@ -3,32 +3,156 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Memory Game</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Memory Munchies</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
   <link rel="stylesheet" href="styles.css">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@500&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  <div class="carousel-wrapper">
-    <div class="carousel-container">
-      <img class="carousel-image" src="logo.png" alt="Image 1">
-      <img class="carousel-image" src="banner.png" alt="Image 2">
+  <audio src="sounds/hero-80s-127027.mp3"></audio>
+  <header>
+    <!-- Header -->
+
+    <h1 class="text-center mb-4 p-5">Memory Munchies</h1>
+
+    <!-- End of Heaader -->
+
+    <!-- Table Section -->
+
+    <div class="container mt-4">
+      <div class="row justify-content-center">
+        <div class="col-6 text-center">
+
+          <table class="table table-dark table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Record Time</th>
+                <th scope="col">Award</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>@Marko121</td>
+                <td>0:36</td>
+                <td>🥇</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>@OttoLewis</td>
+                <td>2:55</td>
+                <td>🥈</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>@ninjamaster</td>
+                <td>3:45</td>
+                <td>🥉</td>
+              </tr>
+              <tr>
+                <th scope="row">4</th>
+                <td>@jimmy223</td>
+                <td>4:30</td>
+                <td>🥉</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- End of table section -->
+
+  </header>
+
+  <!-- Game section -->
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-10 col-lg-12 col-sm-10 text-center">
+
+        <h4 id="timer" class="py-5"></h4>
+        <h4 id="bestTime" class="py-5"></h4>
+
+        <div id="gameBoard" class="justify-content-center mx-auto my-5 ">
+          <!-- card will go in here i think? -->
+        </div>
+      </div>
     </div>
   </div>
-  <h1>Memory Game</h1>
-  <div id="gameBoard">
-    <!-- Cards will go here -->
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-10 col-lg-12 col-sm-10 text-center">
+        <h4 id="currentCard" class="thisCard">
+          <!-- Current card number that is to be matched will print here -->
+        </h4>
+        <button id='easyMode' class="mt-3">Easy</button>
+        <button id='mediumMode' class="mt-3">Medium</button>
+        <button id='hardMode' class="mt-3">Hard</button>
+      </div>
+    </div>
   </div>
-  <h1 id="currentCard">
-    <!-- Current card number that is to be matched will print here -->
-  </h1>
 
-  <button id='easyMode'>Easy</button>
-  <button id='mediumMode'>Medium</button>
-  <button id='hardMode'>Hard</button>
+  <!-- End of game section  -->
 
-  <div id="timer"></div>
-  <div id="bestTime"></div>
 
+  <!-- Footer -->
+
+  <div class="conatiner-fluid">
+    <footer class="footer-margin text-center text-lg-start footer-margin w-100" style="background-color: #f5ebeb;">
+
+      <div class="container d-flex justify-content-center py-3">
+
+
+        <button type="button" class="btn btn-primary btn-lg btn-floating mx-2" style="background-color: #2772db;">
+          <i class="fab fa-facebook"></i>
+        </button>
+
+        <button type="button" class="btn btn-primary btn-lg btn-floating mx-2" style="background-color:#B22222;">
+          <i class="fab fa-youtube"></i>
+        </button>
+
+        <button type="button" class="btn btn-primary btn-lg btn-floating mx-2" style="background-color: #A1045A;">
+          <i class="fab fa-instagram"></i>
+        </button>
+
+        <button type="button" class="btn btn-primary btn-lg btn-floating mx-2" style="background-color: #2772db;">
+          <i class="fab fa-twitter"></i>
+        </button>
+
+        <nav class="nav nav-footer justify-content-center">
+          <a class="nav-link" href="#">Contact us</a>
+          <a class="nav-link" href="#">Terms of Use</a>
+          <a class="nav-link" href="#">Privacy Settings</a>
+          <a class="nav-link" href="#">Help Center</a>
+        </nav>
+
+      </div>
+
+      <!-- Copyright -->
+      <div class="text-center text-white p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2023 Copyright @ NaN-Breads
+      </div>
+      <!-- Copyright -->
+    </footer>
+  </div>
+  <!-- End of footer -->
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+    integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+    integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+    crossorigin="anonymous"></script>
   <script src="script.js"></script>
 </body>
 
